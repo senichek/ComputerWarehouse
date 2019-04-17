@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="webjars/jquery/3.1.0/jquery.min.js" ></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" >
+</head>
+<body>
+<br>
+<div class="container">
+        <div class="card">
+            <div class="card-block">
+
+                <form class="form-inline" method="post"> <!--class="form-inline держит кнопки на одной строке -->
+                    <a class="btn btn-primary" href="/main" role="button">Back To Main Page</a>
+                </form>
+
+                <table class="table table-hover">
+                    <thead>
+                    <br>
+                    <b>NOTHING WAS FOUND</b>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <hr/>
+                <a class="btn btn-primary" href="/add" role="Add New Item">Add New Item</a>
+                <a class="btn btn-primary" href="/all" role="Show All Items">Show All Items</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

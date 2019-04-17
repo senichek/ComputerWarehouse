@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="webjars/jquery/3.1.0/jquery.min.js" ></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" >
+</head>
+<body>
+<br>
+<div class="container">
+        <div class="card">
+            <div class="card-block">
+
+                <form class="form-inline"> <!--class="form-inline держит кнопки на одной строке -->
+                    <a class="btn btn-primary" href="/main" role="button">Back To Main Page</a>
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" style="float: right" aria-label="Search">
+                </form>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>MustHave</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="partsCollection: ${computerPartWeFound}">
+                        <td th:text="${partsCollection.getId()}" />
+                        <td th:text="${partsCollection.getName()}" />
+                        <td th:text="${partsCollection.getAmount()}" />
+                        <td th:text="${partsCollection.getMustHave()}" />
+                        <td> <a th:href="@{'/remove?id=' + ${partsCollection.getId()}}">Delete</a> </td>
+                        <td> <a th:href="@{'/update?id=' + ${partsCollection.getId()}}">Update</a> </td>
+                        <!-- вызываем /remove из контроллера и подставляем id запчасти  -->
+                        <!-- вызываем /update из контроллера и подставляем id запчасти  -->
+                    </tr>
+                    </tbody>
+                </table>
+                <hr/>
+                <a class="btn btn-primary" href="/add" role="Add New Item">Add New Item</a>
+                <a class="btn btn-primary" href="/all" role="Show All Items">Show All Items</a>
+
+            </div>
+        </div>
+
+        <!-- табличка для отрисовки количества компьютеров которые можно собрать -->
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Total amount of PCs</th>
+                <th th:text="${amountOfPCweCanMake}"></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

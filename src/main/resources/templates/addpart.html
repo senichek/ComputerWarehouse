@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script type="text/javascript" src="webjars/jquery/3.1.0/jquery.min.js" ></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" >
+
+</head>
+<body>
+<br/>
+
+<div class="container">
+    <div class="card">
+        <div class="card-block">
+            <a class="btn btn-primary" href="/main" role="button">Back To Main Page</a>
+            <form method="post">
+                <input type="text" name="name" size="25" required placeholder="Введите название детали" />
+                <input type="text" name="amount" required placeholder="Введите количество">
+                <input type="text" size="25" name="mustHave" required placeholder="Обязательная? true/false">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>MustHave</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="partsCollection: ${computerParts}">
+                        <td th:text="${partsCollection.getId()}" />
+                        <td th:text="${partsCollection.getName()}" />
+                        <td th:text="${partsCollection.getAmount()}" />
+                        <td th:text="${partsCollection.getMustHave()}" />
+                        <td> <a th:href="@{'/remove?id=' + ${partsCollection.getId()}}">Delete</a> </td>
+                        <td> <a th:href="@{'/update?id=' + ${partsCollection.getId()}}">Update</a> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr/>
+            <a class="btn btn-primary" href="/all" role="button">Show All Items</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
